@@ -1,8 +1,11 @@
 #!/usr/bin/python
+#import fontv16 as fontv
+import static2
+from subprocess import Popen
+import imp
 import RPi.GPIO as gpio
 import random
 from time import sleep
-
 
 print "hello"
 num=[]
@@ -21,5 +24,11 @@ while len(num)>0:
 			print "%s and %s .... %d" %(digit[0], digit[1], n)
 	p=num.index(n)
 	num.pop(p)
-	sleep (0.01)
+	static2.showmatrix(n)
+	#Popen(["./static.py", str(n)])
+	sleep (2)
+	print "clearing"
+	static2.ldp.clear()
+	#Popen(["pkill", "static.py"])
+	sleep(0.5)
 	print "\n\n"
