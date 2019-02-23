@@ -7,7 +7,6 @@ import RPi.GPIO as gpio
 import random
 from time import sleep
 
-print "hello"
 num=[]
 for x in range (1,91):
 	num.append(x)
@@ -31,4 +30,4 @@ while len(num)>0:
 	static2.ldp.clear()
 	#Popen(["pkill", "static.py"])
 	sleep(0.5)
-	print "\n\n"
+
