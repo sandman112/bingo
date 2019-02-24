@@ -75,6 +75,7 @@ def init():
 # bits to blank and turns off display
 ####################################
 def clear():
+		print "clearing from ldp"
 		gpio.output(R1,1)
 		gpio.output(G1,1)
 		for i in range(64):

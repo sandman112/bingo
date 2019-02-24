@@ -19,11 +19,11 @@ def getch():
     return ch
 
 button_delay = 0.11
-print "s to start bingo"
-print "n for next number"
-print "R to reset"
-print "l for last 5 numbers"
-print "c to check all numbers called"
+print "s to start bingo GPIO 33"
+print "n for next number GPIO 35"
+print "R to reset GPIO 37"
+print "l for last 5 numbers GPIO 37"
+print "c to check all numbers called GPIO 21"
 
 
 while True:
@@ -47,23 +47,23 @@ while True:
 
     elif (char == "r"):
         print("Reset")
-	GPIO.setup(29, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+	GPIO.setup(37, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         time.sleep(button_delay)
-        GPIO.setup(29, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+        GPIO.setup(37, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
         #time.sleep(button_delay)
 
     elif (char == "l"):
         print("Last 5")
-	GPIO.setup(31, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+	GPIO.setup(37, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         time.sleep(button_delay)
-        GPIO.setup(31, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+        GPIO.setup(37, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
         #time.sleep(button_delay)
 
     elif (char == "c"):
 	print("check numbers")
-	GPIO.setup(27,GPIO.IN, pull_up_down=GPIO.PUD_UP)
+	GPIO.setup(21,GPIO.IN, pull_up_down=GPIO.PUD_UP)
 	time.sleep(button_delay)
-	GPIO.setup(27,GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+	GPIO.setup(21,GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
     elif (char == "C"):
         print("Number 1 pressed")
