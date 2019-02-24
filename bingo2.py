@@ -23,7 +23,6 @@ def shiftmatrix():
 
 def showmatrix(n):
 	getnumber(n)
-	print "running showmatrix with %s" %n	
 	while GPIO.input(35)==0 and GPIO.input(37)==0 and GPIO.input(37)==0:
 		for row in range(16):
 			for col in range(64):
@@ -73,67 +72,58 @@ def getnumber(n):
 			matrix[row][offset+col]=(dotarray[row][col])
 
 status=1
-while status>0:
-	num=range(1,91)
-	called=[]
 
-	disp="Start"
+num=range(1,91)
+called=[]
+disp="Start"
 
-
-
-	while True:
-		sleep(0.01)
-		try:
-			showmatrix(disp)
-			if GPIO.input(35)==1: #next number button
-				if len(num)>0:
-					print "35 GONE HIGH"
-					n=random.choice(num)
-					if n<10:
-						print "On its own number %d" %n
+while True:
+	sleep(0.01)
+	try:
+		showmatrix(disp)
+		if GPIO.input(35)==1: #next number button
+			if len(num)>0:
+				n=random.choice(num)
+				if n<10:
+					print "On its own number %d\n\n" %n
+				else:
+					digit=list(str(n))
+					if (digit[0]==digit[1]):
+						print "all the %s's ... %d\n\n" %(digit[0], n)
 					else:
-						digit=list(str(n))
-						if (digit[0]==digit[1]):
-							print "all the %s's ... %d" %(digit[0], n)
-						else:
-							print "%s and %s ... %d" %(digit[0], digit[1], n)
-					p = num.index(n)
-					#t.start()
-					num.pop(p)
-					called.append(n)
-					disp = n
-					sleep(0.3)
-					print "clearing"
-					#sleep(0.5)
-					print called
-					print len(called)
+						print "%s and %s ... %d\n\n" %(digit[0], digit[1], n)
+				p = num.index(n)
+				num.pop(p)
+				called.append(n)
+				disp = n
+				sleep(0.3)
+				#print called
+				#print len(called)
+		if GPIO.input(37)==1: #reset the game back to the begining
+			called=[]
+			num=range(1,91)
+			print "Reseting game"
+			status=0
+			disp="Start"
+			print num
+			sleep(1)
+		#if GPIO.input(37)==1: #this is the last 5 numbers called ... dunno if this feature will remain
+		#	sleep(0.3)
+		#	count=len(called)
+		#	if count<5:
+		#		for i in range(count):
+		#			disp=called[i]
+		#			sleep(0.3)
+		#			showmatrix(disp)
+		#	else:
+		#		for i in range(count-5,count):
+		#			disp=called[i]
+		#			sleep(0.3)
+		#			showmatrix(disp)
 
-			if GPIO.input(37)==1: #reset the game back to the begining
-				called=[]
-				num=range(1,91)
-				print "Reseting game"
-				status=0
-				disp="Start"
-				print num
-				sleep(1)
-
-			#if GPIO.input(37)==1: #this is the last 5 numbers called ... dunno if this feature will remain
-			#	sleep(0.3)
-			#	count=len(called)
-			#	if count<5:
-			#		for i in range(count):
-			#			disp=called[i]
-			#			sleep(0.3)
-			#			showmatrix(disp)
-			#	else:
-			#		for i in range(count-5,count):
-			#			disp=called[i]
-			#			sleep(0.3)
-			#			showmatrix(disp)
-
-		except KeyboardInterrupt:
-			ldp.clear()
-			sys.exit()
+	except KeyboardInterrupt:
+		ldp.clear()
+		sys.exit()
 #while True:
 #	try:
 #		showmatrix()

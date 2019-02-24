@@ -3,6 +3,8 @@ import sys
 import time
 import fontv16 as fontv
 import ldp
+import RPi.GPIO as GPIO
+GPIO.setup(33,GPIO.IN)
 
 # the matrix is a representation of the led's that are lit on the 80x8 display
 #
@@ -102,6 +104,9 @@ while True:
 	try:
 		# now that we have updated the matrix lets show it
 		showmatrix()
+		if GPIO.input(33)==1:
+			print "222"
+			ldp.clear()
 		#time.sleep(0.0001)
 
 	except KeyboardInterrupt:

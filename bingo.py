@@ -6,6 +6,13 @@ import imp
 import RPi.GPIO as gpio
 import random
 from time import sleep
+from threading import Thread as thread
+
+def show(n)
+	static2
+
+t=thread(target=show, args=(n,))
+threads.append(t)
 
 num=[]
 for x in range (1,91):
@@ -23,7 +30,8 @@ while len(num)>0:
 			print "%s and %s .... %d" %(digit[0], digit[1], n)
 	p=num.index(n)
 	num.pop(p)
-	static2.showmatrix(n)
+	t.start()
+	#static2.showmatrix(n)
 	#Popen(["./static.py", str(n)])
 	sleep (2)
 	print "clearing"
