@@ -1,4 +1,3 @@
-#this is for git
 #!/usr/bin/python
 import sys
 from time import sleep
