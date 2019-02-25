@@ -8,7 +8,7 @@ from threading import Thread
 import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BOARD)
-GPIO.setwarnings(True)
+GPIO.setwarnings(False)
 GPIO.setup(35, GPIO.IN)
 GPIO.setup(37, GPIO.IN)
 GPIO.setup(33, GPIO.IN)
