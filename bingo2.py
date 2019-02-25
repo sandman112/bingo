@@ -106,7 +106,7 @@ while True:
 			disp="Start"
 			print num
 			sleep(1)
-		#if GPIO.input(37)==1: #this is the last 5 numbers called ... dunno if this feature will remain
+		#if GPIO.input(33)==1: #this is the last 5 numbers called ... dunno if this feature will remain
 		#	sleep(0.3)
 		#	count=len(called)
 		#	if count<5:
